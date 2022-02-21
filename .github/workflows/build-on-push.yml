@@ -13,6 +13,11 @@ jobs:
       - run: flutter build web
       - run: mkdir docs
       - run: cp -a build/web/. docs/
+      - run: |
+          git config --global user.name 'bajiepkasmile'
+          git config --global user.email 'bajiepkasmile@yandex.ru'
+          git commit -am "Automated report"
+          git push
       
       
 #       - uses: canastro/copy-file-action@master
