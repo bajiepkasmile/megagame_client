@@ -9,8 +9,8 @@ class Input {
 
   final List<InputSource> _sources = [
     KeyboardSource(),
-    MouseSource(),
-    SpeechSource(),
+    // MouseSource(),
+    // SpeechSource(),
   ];
 
   void subscribe(InputConfig filter, void Function(Command command) onCommand) {
