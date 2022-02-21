@@ -16,8 +16,8 @@ jobs:
       - run: |
           git config --global user.name 'bajiepkasmile'
           git config --global user.email 'bajiepkasmile@yandex.ru'
+          git add docs/*
           git commit -am "Automated report"
-          git commit docs/*
           git push
       
       
