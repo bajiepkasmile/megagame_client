@@ -10,8 +10,8 @@ jobs:
         with: 
           cache: true
       - run: flutter pub get
-      - run: flutter build web
-      - run: sed -i -e '/base href=/d' build/web/index.html
+      - run: flutter build web --base-href=""
+#       - run: sed -i -e '/base href=/d' build/web/index.html
       - run: mkdir -p docs
       - run: cp -a build/web/. docs/
       - run: |
@@ -20,50 +20,3 @@ jobs:
           git add docs/*
           git commit -am "Automated report"
           git push
-      
-      
-#       - uses: canastro/copy-file-action@master
-#         with:
-#           source: "build/web"
-#           target: "docs"
-      
-#       - uses: canastro/copy-file-action@master
-#         with:
-#           source: "/build/web/favicon.png"
-#           target: "/docs/favicon.png"
-      
-#       - uses: canastro/copy-file-action@master
-#         with:
-#           source: "/build/web/.last_build_id"
-#           target: "/docs/.last_build_id"
-      
-#       - uses: canastro/copy-file-action@master
-#         with:
-#           source: "/build/web/flutter_service_worker.js"
-#           target: "/docs/flutter_service_worker.js"
-      
-#       - uses: canastro/copy-file-action@master
-#         with:
-#           source: "/build/web/index.html"
-#           target: "/docs/index.html"
-      
-#       - uses: canastro/copy-file-action@master
-#         with:
-#           source: "/build/web/main.dart.js"
-#           target: "/docs/main.dart.js"
-      
-#       - uses: canastro/copy-file-action@master
-#         with:
-#           source: "/build/web/manifest.json"
-#           target: "/docs/manifest.json"
-      
-#       - uses: canastro/copy-file-action@master
-#         with:
-#           source: "/build/web/version.json"
-#           target: "/docs/version.json"
-      
-#       - uses: canastro/copy-file-action@master
-#         with:
-#           source: "/build/web/icons"
-#           target: "/docs/icons"
-      
