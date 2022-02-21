@@ -11,21 +11,10 @@ jobs:
           cache: true
       - run: flutter pub get
       - run: flutter build web
-      - run: ls ${{ github.workspace }}
-      - run: ls
-      - run: cd build
-      - run: ls
-      - run: cd docs
-      - run: ls
-      
-      
-      
-      
-      
-#       - uses: canastro/copy-file-action@master
-#         with:
-#           source: "build/web/"
-#           target: "docs/"
+      - uses: canastro/copy-file-action@master
+        with:
+          source: "build/web"
+          target: "docs"
       
 #       - uses: canastro/copy-file-action@master
 #         with:
