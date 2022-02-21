@@ -1,4 +1,8 @@
-abstract class SendMapper<T> {
+import 'package:megagame_client/data/input/commands/command.dart';
 
-  dynamic map(T value);
+abstract class SendMapper<TCommand extends Command> {
+
+  bool isAcceptable(Command command);
+
+  dynamic map(TCommand command);
 }

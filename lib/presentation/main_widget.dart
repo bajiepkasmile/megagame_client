@@ -18,5 +18,5 @@ class _MainWidgetState extends State<MainWidget> {
   }
 
   @override
-  Widget build(BuildContext context) => MaterialApp(home: _model.worldWidget);
+  Widget build(BuildContext context) => MaterialApp(home: _model.widget);
 }

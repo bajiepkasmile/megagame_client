@@ -5,15 +5,15 @@ import 'package:megagame_client/data/server/server.dart';
 
 class MainModel {
 
-  Widget worldWidget = const Text("Loading");
+  Widget widget = const Text("Loading");
 
   final Server _server = Server();
   final Input _input = Input();
 
   MainModel(void Function() onUpdate) {
-    _input.subscribe(InputConfig.keyboard, _server.send);
-    _server.receive((worldWidget) {
-      this.worldWidget = worldWidget;
+    _input.subscribe(InputConfig.current, _server.send);
+    _server.receive((widget) {
+      this.widget = widget;
       onUpdate();
     });
   }

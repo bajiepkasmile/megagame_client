@@ -1,8 +1,8 @@
 import 'package:megagame_client/data/input/commands/command.dart';
 
-class MoveCursorCommand extends Command {
+class CursorCommand extends Command {
 
   final num x, y;
 
-  MoveCursorCommand(this.x, this.y);
+  CursorCommand(this.x, this.y);
 }

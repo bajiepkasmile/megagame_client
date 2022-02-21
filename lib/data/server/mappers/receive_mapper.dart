@@ -1,4 +1,8 @@
+import 'package:flutter/material.dart';
+
 abstract class ReceiveMapper<T> {
 
-  T map(dynamic data);
+  bool isAcceptable(dynamic data);
+
+  Widget map(dynamic data);
 }

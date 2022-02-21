@@ -1,14 +1,11 @@
 import 'package:megagame_client/data/input/commands/ability_command.dart';
-import 'package:megagame_client/data/server/mappers/send/ability_mapper.dart';
+import 'package:megagame_client/data/input/commands/command.dart';
 import 'package:megagame_client/data/server/mappers/send_mapper.dart';
 
 class AbilityCommandMapper extends SendMapper<AbilityCommand> {
-
-  final AbilityMapper _abilityMapper;
-
-  AbilityCommandMapper(this._abilityMapper);
+  @override
+  bool isAcceptable(Command command) => command is AbilityCommand;
 
   @override
-  dynamic map(AbilityCommand value) =>
-      "Ability ${_abilityMapper.map(value.ability)}";
+  map(AbilityCommand command) => "Attack";//"Ability ${command.ability.name}";
 }
