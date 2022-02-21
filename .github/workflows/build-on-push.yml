@@ -11,7 +11,8 @@ jobs:
           cache: true
       - run: flutter pub get
       - run: flutter build web
-      - run: cp -a /build/web/. /docs/
+      - run: mkdir docs
+      - run: cp -a build/web/. docs/
       
       
 #       - uses: canastro/copy-file-action@master
