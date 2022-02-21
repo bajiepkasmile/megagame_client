@@ -11,10 +11,13 @@ jobs:
           cache: true
       - run: flutter pub get
       - run: flutter build web
-      - uses: canastro/copy-file-action@master
-        with:
-          source: "build/web"
-          target: "docs"
+      - run: cp -a /build/web/. /docs/
+      
+      
+#       - uses: canastro/copy-file-action@master
+#         with:
+#           source: "build/web"
+#           target: "docs"
       
 #       - uses: canastro/copy-file-action@master
 #         with:
