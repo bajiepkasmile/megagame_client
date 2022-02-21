@@ -11,6 +11,8 @@ jobs:
           cache: true
       - run: flutter pub get
       - run: flutter build web
+      - run: sed -i -e '/base href=/d' build/web/index.html
+      - run: rm build/web/index.html-e
       - run: mkdir -p docs
       - run: cp -a build/web/. docs/
       - run: |
