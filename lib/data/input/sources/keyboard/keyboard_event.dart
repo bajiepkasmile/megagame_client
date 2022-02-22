@@ -12,7 +12,6 @@ abstract class KeyboardEvent
   bool isAcceptable(KeyboardEventAndIsKeyDown value) {
     final a = value.htmlKeyboardEvent.keyCode == keyCode
         && value.isKeyDown == isKeyDown;
-    log("isAcceptable ${value.htmlKeyboardEvent} ${value.isKeyDown} $a");
     return a;
   }
 

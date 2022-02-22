@@ -11,7 +11,6 @@ class TestConnection implements Connection {
 
   @override
   void send(dynamic data) {
-    log("$data");
   }
 
   @override
