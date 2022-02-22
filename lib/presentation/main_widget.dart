@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:megagame_client/presentation/main_model.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 
 class MainWidget extends StatefulWidget {
 
@@ -11,12 +14,33 @@ class MainWidget extends StatefulWidget {
 
 class _MainWidgetState extends State<MainWidget> {
 
-  late final MainModel _model;
+  final widgets = <Widget>[Text("start")];
 
-  _MainWidgetState() {
-    _model = MainModel(() => setState(() {}));
-  }
+  // late final MainModel _model;
+  //
+  // _MainWidgetState() {
+  //   _model = MainModel(() => setState(() {}));
+  // }
+  //
+  // @override
+  // Widget build(BuildContext context) => MaterialApp(home: _model.widget);
+
 
   @override
-  Widget build(BuildContext context) => MaterialApp(home: _model.widget);
+  Widget build(BuildContext context) => MaterialApp(home: ListView(children: widgets));
+
+  _MainWidgetState() {
+    widgets.add(Text("1"));
+    final id = Random().nextInt(1000000);
+    widgets.add(Text("2"));
+    final _channel =
+        WebSocketChannel.connect(Uri.parse("ws://87.247.157.178:8001/ws/$id"));
+    widgets.add(Text("3"));
+
+    _channel.stream.listen(
+          (data) { widgets.add(Text("data: $data")); setState(() {});},
+          onError: (error) { widgets.add(Text("error: $error")); setState(() {}); },
+          onDone: () { widgets.add(Text("done")); setState(() {}); },
+    );
+  }
 }
