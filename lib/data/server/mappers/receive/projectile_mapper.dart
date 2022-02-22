@@ -10,8 +10,21 @@ class ProjectileMapper extends ReceiveMapper {
   @override
   Widget map(data) {
     final parts = data.split(" ");
-    final x = double.parse(parts[1]);
-    final y = double.parse(parts[2]);
+    var x = double.parse(parts[1]);
+    var y = double.parse(parts[2]);
+
+    if (x < 0) {
+      x = 0;
+    } else if (x > 800) {
+      x = 800;
+    }
+
+    if (y < 0) {
+      y = 0;
+    } else if (y > 800) {
+      y = 800;
+    }
+
     return ProjectileWidget(x, y);
   }
 }

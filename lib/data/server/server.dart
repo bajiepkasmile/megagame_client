@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/widgets.dart';
 import 'package:megagame_client/data/input/commands/command.dart';
 import 'package:megagame_client/data/server/connections/connection.dart';
@@ -13,19 +11,10 @@ class Server {
   final CommandMapper _commandMapper = CommandMapper();
   final WorldMapper _worldWidgetMapper = WorldMapper();
 
-  void send(Command command) {
-      log("________");
-    log("send: " + _commandMapper.map(command));
-      log("________");
-    _connection.send(_commandMapper.map(command));
-  }
+  void send(Command command) => _connection.send(_commandMapper.map(command));
 
-  void receive(void Function(Widget) onReceive) {
-
-    _connection.connect((data) {
-      onReceive(_worldWidgetMapper.map(data));
-    });
-  }
+  void receive(void Function(Widget) onReceive) =>
+    _connection.connect((data) => onReceive(_worldWidgetMapper.map(data)));
 
   void exit() => _connection.disconnect();
 }
