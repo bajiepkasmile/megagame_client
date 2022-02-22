@@ -5,7 +5,7 @@ import 'package:megagame_client/data/server/server.dart';
 
 class MainModel {
 
-  Widget widget = const Text("Waiting for backend");
+  Widget widget = const Text("Loading");
 
   final Server _server = Server();
   final Input _input = Input();
@@ -13,7 +13,7 @@ class MainModel {
   MainModel(void Function() onUpdate) {
     _input.subscribe(InputConfig.current, _server.send);
     _server.receive((widget) {
-      // this.widget = widget;
+      this.widget = widget;
       onUpdate();
     });
   }
