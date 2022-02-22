@@ -15,5 +15,5 @@ class SDownEvent extends KeyboardEvent {
   bool isKeyDown = true;
 
   @override
-  Command command = MoveCommand(Direction.left, Action.start);
+  Command command = MoveCommand(Direction.up, Action.start);
 }

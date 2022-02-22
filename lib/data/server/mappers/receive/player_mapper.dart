@@ -10,8 +10,9 @@ class PlayerMapper extends ReceiveMapper {
   @override
   Widget map(dynamic data) {
     final parts = data.split(" ");
-    final x = double.parse(parts[1]);
-    final y = double.parse(parts[2]);
-    return PlayerWidget(x, y);
+    final id = parts[1];
+    final x = double.parse(parts[2]);
+    final y = double.parse(parts[3]);
+    return PlayerWidget(id, x, y);
   }
 }

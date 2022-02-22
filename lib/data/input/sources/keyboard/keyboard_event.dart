@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
 import 'package:megagame_client/data/input/commands/command.dart';
 import 'package:megagame_client/data/input/sources/input_event.dart';
@@ -7,9 +9,12 @@ abstract class KeyboardEvent
     implements InputEvent<KeyboardEventAndIsKeyDown> {
 
   @override
-  bool isAcceptable(KeyboardEventAndIsKeyDown value) =>
-      value.htmlKeyboardEvent.keyCode == keyCode
-          && value.isKeyDown == isKeyDown;
+  bool isAcceptable(KeyboardEventAndIsKeyDown value) {
+    final a = value.htmlKeyboardEvent.keyCode == keyCode
+        && value.isKeyDown == isKeyDown;
+    log("isAcceptable ${value.htmlKeyboardEvent} ${value.isKeyDown} $a");
+    return a;
+  }
 
   @override
   Command createCommand(KeyboardEventAndIsKeyDown value) => command;

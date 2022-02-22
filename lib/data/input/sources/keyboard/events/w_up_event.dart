@@ -15,5 +15,5 @@ class WUpEvent extends KeyboardEvent {
   bool isKeyDown = false;
 
   @override
-  Command command = MoveCommand(Direction.left, Action.stop);
+  Command command = MoveCommand(Direction.down, Action.stop);
 }

@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 class PlayerWidget extends StatelessWidget {
 
+  final String _id;
   final double _x;
   final double _y;
 
-  const PlayerWidget(this._x, this._y, {Key? key}) : super(key: key);
+  const PlayerWidget(this._id, this._x, this._y, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) =>

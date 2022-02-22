@@ -15,5 +15,5 @@ class WDownEvent extends KeyboardEvent {
   bool isKeyDown = true;
 
   @override
-  Command command = MoveCommand(Direction.left, Action.start);
+  Command command = MoveCommand(Direction.down, Action.start);
 }

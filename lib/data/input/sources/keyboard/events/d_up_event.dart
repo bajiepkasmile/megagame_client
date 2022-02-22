@@ -15,5 +15,5 @@ class DUpEvent extends KeyboardEvent {
   bool isKeyDown = false;
 
   @override
-  Command command = MoveCommand(Direction.left, Action.stop);
+  Command command = MoveCommand(Direction.right, Action.stop);
 }

@@ -15,5 +15,5 @@ class SUpEvent extends KeyboardEvent {
   bool isKeyDown = false;
 
   @override
-  Command command = MoveCommand(Direction.left, Action.stop);
+  Command command = MoveCommand(Direction.up, Action.stop);
 }
