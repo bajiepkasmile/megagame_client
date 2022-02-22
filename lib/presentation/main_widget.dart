@@ -39,7 +39,7 @@ class _MainWidgetState extends State<MainWidget> {
 
     _channel.stream.listen(
           (data) { widgets.add(Text("data: $data")); setState(() {});},
-          onError: (error) { widgets.add(Text("error: $error")); setState(() {}); },
+          onError: (error) { widgets.add(Text("error: ${error.message} ||| ${error.inner}")); setState(() {}); },
           onDone: () { widgets.add(Text("done")); setState(() {}); },
     );
   }
