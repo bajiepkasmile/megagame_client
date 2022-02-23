@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class MainWidget extends StatefulWidget {
 
 class _MainWidgetState extends State<MainWidget> {
 
-  final widgets = <Widget>[Text("start")];
+  final widgets = <Widget>[];
 
   // late final MainModel _model;
   //
@@ -30,10 +31,12 @@ class _MainWidgetState extends State<MainWidget> {
   Widget build(BuildContext context) => MaterialApp(home: ListView(children: widgets));
 
   _MainWidgetState() {
+    widgets.add(Text("start"));
     final id = Random().nextInt(1000000);
     widgets.add(Text("id = $id"));
     final _channel =
-        WebSocketChannel.connect(Uri.parse("ws://87.247.157.178:8001/ws/$id"));
+        // WebSocketChannel.connect(Uri.parse("ws://87.247.157.178:8001/ws/$id"));
+        WebSocketChannel.connect(Uri.parse("wss://ws-feed.pro.coinbase.com"));
     widgets.add(Text("connect called"));
 
     _channel.stream.listen(
@@ -41,6 +44,23 @@ class _MainWidgetState extends State<MainWidget> {
           onError: (error) { widgets.add(Text("onError: ${error.message} ||| ${error.inner}")); setState(() {}); },
           onDone: () { widgets.add(Text("onDone")); setState(() {}); },
     );
-    widgets.add(Text("4"));
+
+    _channel.sink.add(
+      jsonEncode(
+        {
+          "type": "subscribe",
+          "channels": [
+            {
+              "name": "ticker",
+              "product_ids": [
+                "BTC-EUR",
+              ]
+            }
+          ]
+        },
+      ),
+    );
+
+    widgets.add(Text("end"));
   }
 }
