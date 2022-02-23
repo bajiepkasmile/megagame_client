@@ -1,22 +1,22 @@
-name: Build on push
-on: [push]
-
-jobs:
-  Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: subosito/flutter-action@v2
-        with:
-          cache: true
-      - run: flutter pub get
-      - run: flutter build web
-      - run: sed -i -e '/base href=/d' build/web/index.html
-      - run: mkdir -p docs
-      - run: cp -a build/web/. docs/
-      - run: |
-          git config --global user.name 'bajiepkasmile'
-          git config --global user.email 'bajiepkasmile@yandex.ru'
-          git add docs/*
-          git commit -am "Automated report"
-          git push
+#name: Build on push
+#on: [push]
+#
+#jobs:
+#  Explore-GitHub-Actions:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - uses: subosito/flutter-action@v2
+#        with:
+#          cache: true
+#      - run: flutter pub get
+#      - run: flutter build web
+#      - run: sed -i -e '/base href=/d' build/web/index.html
+#      - run: mkdir -p docs
+#      - run: cp -a build/web/. docs/
+#      - run: |
+#          git config --global user.name 'bajiepkasmile'
+#          git config --global user.email 'bajiepkasmile@yandex.ru'
+#          git add docs/*
+#          git commit -am "Automated report"
+#          git push

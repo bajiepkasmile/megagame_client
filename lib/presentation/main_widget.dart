@@ -30,17 +30,17 @@ class _MainWidgetState extends State<MainWidget> {
   Widget build(BuildContext context) => MaterialApp(home: ListView(children: widgets));
 
   _MainWidgetState() {
-    widgets.add(Text("1"));
     final id = Random().nextInt(1000000);
-    widgets.add(Text("2"));
+    widgets.add(Text("id = $id"));
     final _channel =
         WebSocketChannel.connect(Uri.parse("ws://87.247.157.178:8001/ws/$id"));
-    widgets.add(Text("3"));
+    widgets.add(Text("connect called"));
 
     _channel.stream.listen(
-          (data) { widgets.add(Text("data: $data")); setState(() {});},
-          onError: (error) { widgets.add(Text("error: ${error.message} ||| ${error.inner}")); setState(() {}); },
-          onDone: () { widgets.add(Text("done")); setState(() {}); },
+          (data) { widgets.add(Text("onData: $data")); setState(() {});},
+          onError: (error) { widgets.add(Text("onError: ${error.message} ||| ${error.inner}")); setState(() {}); },
+          onDone: () { widgets.add(Text("onDone")); setState(() {}); },
     );
+    widgets.add(Text("4"));
   }
 }
