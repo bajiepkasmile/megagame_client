@@ -35,8 +35,9 @@ class _MainWidgetState extends State<MainWidget> {
     final id = Random().nextInt(1000000);
     widgets.add(Text("id = $id"));
     final _channel =
-        // WebSocketChannel.connect(Uri.parse("ws://87.247.157.178:8001/ws/$id"));
-        WebSocketChannel.connect(Uri.parse("ws://ws-feed.pro.coinbase.com"));
+        WebSocketChannel.connect(Uri.parse("ws://87.247.157.178:8001/ws/$id"));
+        // WebSocketChannel.connect(Uri.parse("ws://ws-feed.pro.coinbase.com"));
+
     widgets.add(Text("WebSocketChannel.connect"));
 
     _channel.stream.listen(
@@ -45,21 +46,21 @@ class _MainWidgetState extends State<MainWidget> {
           onDone: () { widgets.add(Text("onDone")); setState(() {}); },
     );
 
-    _channel.sink.add(
-      jsonEncode(
-        {
-          "type": "subscribe",
-          "channels": [
-            {
-              "name": "ticker",
-              "product_ids": [
-                "BTC-EUR",
-              ]
-            }
-          ]
-        },
-      ),
-    );
+    // _channel.sink.add(
+    //   jsonEncode(
+    //     {
+    //       "type": "subscribe",
+    //       "channels": [
+    //         {
+    //           "name": "ticker",
+    //           "product_ids": [
+    //             "BTC-EUR",
+    //           ]
+    //         }
+    //       ]
+    //     },
+    //   ),
+    // );
 
     widgets.add(Text("end"));
   }
