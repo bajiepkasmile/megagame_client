@@ -48975,8 +48975,8 @@ return new A.pW(new A.yy(new A.TP(!0,!0,!0,r,q),s,B.bl,!1,s,!0,B.re,!1,s,p,B.bx,
 KV(){var s,r,q,p,o=this,n="_foreign",m=o.d
 m.push(A.n4("start"))
 m.push(A.n4("id = "+B.to.Vo(1e6)))
-s=A.ae5(A.a1Z("wss://ws-feed.pro.coinbase.com"),null)
-m.push(A.n4("connect called"))
+s=A.ae5(A.a1Z("ws://ws-feed.pro.coinbase.com"),null)
+m.push(A.n4("WebSocketChannel.connect"))
 r=s.f
 q=A.b(A.b(r.b,n).b,"_streamController")
 new A.dt(q,A.q(q).j("dt<1>")).Di(new A.Xq(o),new A.Xr(o),new A.Xs(o))

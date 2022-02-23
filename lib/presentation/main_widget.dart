@@ -36,8 +36,8 @@ class _MainWidgetState extends State<MainWidget> {
     widgets.add(Text("id = $id"));
     final _channel =
         // WebSocketChannel.connect(Uri.parse("ws://87.247.157.178:8001/ws/$id"));
-        WebSocketChannel.connect(Uri.parse("wss://ws-feed.pro.coinbase.com"));
-    widgets.add(Text("connect called"));
+        WebSocketChannel.connect(Uri.parse("ws://ws-feed.pro.coinbase.com"));
+    widgets.add(Text("WebSocketChannel.connect"));
 
     _channel.stream.listen(
           (data) { widgets.add(Text("onData: $data")); setState(() {});},
